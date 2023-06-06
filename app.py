@@ -5,9 +5,6 @@ import os
 
 
 def main():
-    os.environ[
-        "API_TOKENS"
-    ] = "ba95568cfd68462f99da2476a3fd57ca,6e88b49266ce4b5db5449071ea3c7508,d627deb9f64e44d4a4c554ea6842e184,eca9dec4d8614a7891fa7e69efcb517e,d72b75869a73428da298dea5436843ab,ef4957879d814ae4af47e8ac80c294e2"
     tokens = os.environ["API_TOKENS"].split(",")
     print(tokens)
     st.set_page_config(
