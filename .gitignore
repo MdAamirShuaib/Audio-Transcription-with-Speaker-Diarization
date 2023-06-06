@@ -5,3 +5,4 @@ wordCloud/__pycache__
 config.ini
 .vscode
 speechEmotionRecognition/models
+.env
