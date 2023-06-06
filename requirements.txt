@@ -1,0 +1,14 @@
+fastapi
+uvicorn
+python-multipart
+pydantic
+DateTime
+numpy
+pandas
+python-docx
+regex
+requests
+gunicorn
+deep_translator
+yake
+wordcloud
