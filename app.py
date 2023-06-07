@@ -2,7 +2,7 @@ import streamlit as st
 from transcriptionServices import englishTranscription
 from wordCloud import generateWordCloud
 from dotenv import load_dotenv
-from htmlTemplates import footer, completed
+from htmlTemplates import footer, completed, links
 import os
 
 
@@ -16,6 +16,7 @@ def main():
     st.set_page_config(
         page_title="Audio Transcription", page_icon=":speaker:", layout="wide"
     )
+    st.markdown(links, unsafe_allow_html=True)
     st.title("Audio Transcription with Speaker Diarization")
 
     with st.sidebar:
@@ -41,12 +42,12 @@ def main():
                 )
             else:
                 st.write("Please upload a file")
+        st.markdown(footer, unsafe_allow_html=True)
     if TranscriptionComplete:
         st.table(data)
         col1, col2 = st.columns(2)
         with col1:
             st.pyplot(wordclouds)
-    st.markdown(footer, unsafe_allow_html=True)
 
 
 if __name__ == "__main__":
