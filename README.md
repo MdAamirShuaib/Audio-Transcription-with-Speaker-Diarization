@@ -1,5 +1,5 @@
 # Audio Transcription with Speaker Diarization
-Streamlit app to transcribe audio with Speaker Seperation
+Streamlit app to transcribe audio with automatic Speaker detection and seperation.
 
 #Demo 
 https://mdaamirshuaib-audio-transcription.streamlit.app/
