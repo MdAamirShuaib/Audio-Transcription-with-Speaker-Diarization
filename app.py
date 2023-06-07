@@ -7,7 +7,10 @@ import os
 
 
 def main():
-    load_dotenv()
+    try:
+        load_dotenv()
+    except:
+        pass
     TranscriptionComplete = False
     tokens = os.environ["API_TOKENS"].split(",")
     st.set_page_config(
