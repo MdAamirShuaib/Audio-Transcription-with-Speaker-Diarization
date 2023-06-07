@@ -9,9 +9,8 @@ https://mdaamirshuaib-audio-transcription.streamlit.app/
 
 
 # Setup
-clone the repo
-`https://github.com/MdAamirShuaib/audio-transcription-backend`
-install dependencies `pip install -r requirements.txt`
-create a `.env` file and add a variable API_TOKENS="token1,token2,token3,....." these are AssemblyAI tokens 
-you can signup for free and generate a token - `https://www.assemblyai.com/`
-Run the Streamlit app `streamlit run app.py`
+1. clone the repo - https://github.com/MdAamirShuaib/audio-transcription-backend
+2. install dependencies `pip install -r requirements.txt`
+3. create a `.env` file and add a variable API_TOKENS="token1,token2,token3,....." these are AssemblyAI tokens 
+4. you can signup for free and generate a token - https://www.assemblyai.com/
+5. Run the Streamlit app `streamlit run app.py`
