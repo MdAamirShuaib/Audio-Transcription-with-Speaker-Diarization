@@ -17,7 +17,7 @@ def main():
         page_title="Audio Transcription", page_icon=":speaker:", layout="wide"
     )
     st.markdown(links, unsafe_allow_html=True)
-    st.title("Audio Transcription : Speaker Diarization")
+    st.title("Audio Transcription with Speaker Diarization")
 
     with st.sidebar:
         uploaded_file = st.file_uploader("Choose a file", type=["mp3", "wav", "mp4"])
