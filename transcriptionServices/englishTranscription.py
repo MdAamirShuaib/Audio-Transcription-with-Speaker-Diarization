@@ -54,14 +54,14 @@ def json_data_extraction(result):
     print("Starting Data Extraction")
     audindex = pd.json_normalize(result["words"])
     chapters = pd.json_normalize(result["chapters"])
-    topics = pd.json_normalize(result["iab_categories_result"]["results"])
-    topics["label_1"] = topics["labels"].apply(lambda x: x[0]["label"])
-    topics["label_2"] = topics["labels"].apply(
-        lambda x: x[1]["label"] if len(x) > 1 else "none"
-    )
-    topics["label_3"] = topics["labels"].apply(
-        lambda x: x[2]["label"] if len(x) > 2 else "none"
-    )
+    # topics = pd.json_normalize(result["iab_categories_result"]["results"])
+    # topics["label_1"] = topics["labels"].apply(lambda x: x[0]["label"])
+    # topics["label_2"] = topics["labels"].apply(
+    #     lambda x: x[1]["label"] if len(x) > 1 else "none"
+    # )
+    # topics["label_3"] = topics["labels"].apply(
+    #     lambda x: x[2]["label"] if len(x) > 2 else "none"
+    # )
     highlights = pd.json_normalize(result["auto_highlights_result"]["results"])
     highlights = highlights.text.unique()
     audindex["summary"] = ""
@@ -90,22 +90,22 @@ def json_data_extraction(result):
                 audindex.loc[i, "headline"] = chapters.iloc[j]["headline"]
                 audindex.loc[i, "gist"] = chapters.iloc[j]["gist"]
 
-    for j in range(0, len(topics)):
-        try:
-            for i in range(0, len(audindex)):
-                if (
-                    audindex.iloc[i]["start"] >= topics.iloc[j]["timestamp.start"]
-                    and audindex.iloc[i]["end"] <= topics.iloc[j + 1]["timestamp.start"]
-                ):
-                    audindex.loc[i, "label_1"] = topics.iloc[j]["label_1"]
-                    audindex.loc[i, "label_2"] = topics.iloc[j]["label_2"]
-                    audindex.loc[i, "label_3"] = topics.iloc[j]["label_3"]
-        except:
-            for i in range(0, len(audindex)):
-                if audindex.iloc[i]["start"] >= topics.iloc[j]["timestamp.start"]:
-                    audindex.loc[i, "label_1"] = topics.iloc[j]["label_1"]
-                    audindex.loc[i, "label_2"] = topics.iloc[j]["label_2"]
-                    audindex.loc[i, "label_3"] = topics.iloc[j]["label_3"]
+    # for j in range(0, len(topics)):
+    #     try:
+    #         for i in range(0, len(audindex)):
+    #             if (
+    #                 audindex.iloc[i]["start"] >= topics.iloc[j]["timestamp.start"]
+    #                 and audindex.iloc[i]["end"] <= topics.iloc[j + 1]["timestamp.start"]
+    #             ):
+    #                 audindex.loc[i, "label_1"] = topics.iloc[j]["label_1"]
+    #                 audindex.loc[i, "label_2"] = topics.iloc[j]["label_2"]
+    #                 audindex.loc[i, "label_3"] = topics.iloc[j]["label_3"]
+    #     except:
+    #         for i in range(0, len(audindex)):
+    #             if audindex.iloc[i]["start"] >= topics.iloc[j]["timestamp.start"]:
+    #                 audindex.loc[i, "label_1"] = topics.iloc[j]["label_1"]
+    #                 audindex.loc[i, "label_2"] = topics.iloc[j]["label_2"]
+    #                 audindex.loc[i, "label_3"] = topics.iloc[j]["label_3"]
 
     group = [
         "speaker",
@@ -113,9 +113,9 @@ def json_data_extraction(result):
         "headline",
         "gist",
         "sequence",
-        "label_1",
-        "label_2",
-        "label_3",
+        # "label_1",
+        # "label_2",
+        # "label_3",
     ]
     df = pd.DataFrame(
         audindex.groupby(group).agg(
